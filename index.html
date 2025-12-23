@@ -15,14 +15,11 @@
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- AOS (Animate On Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Particles.js -->
+    
+    <!-- Particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-    <!-- Custom Tailwind Config -->
+    
+    <!-- Konfigurasi Tailwind Custom -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -32,11 +29,11 @@
                         sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        dark: '#0f172a',
-                        darker: '#020617',
-                        card: '#1e293b',
-                        primary: '#6366f1',
-                        accent: '#818cf8',
+                        dark: '#0f172a',    // Slate-900
+                        darker: '#020617',  // Slate-950
+                        card: '#1e293b',    // Slate-800
+                        primary: '#6366f1', // Indigo-500
+                        accent: '#818cf8',  // Indigo-400
                     }
                 }
             }
@@ -58,28 +55,12 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #6366f1;
         }
-
-        /* Particle Background */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: #0f172a;
-        }
-
-        /* Pastikan konten di atas particle */
-        body > *:not(#particles-js) {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigasi Garis Bawah Animasi */
+        
+        /* Navigasi dengan Garis Bawah Animasi */
         .nav-link {
             position: relative;
         }
+        
         .nav-link::after {
             content: '';
             position: absolute;
@@ -90,48 +71,51 @@
             background-color: #6366f1;
             transition: width 0.3s ease-in-out;
         }
+
         .nav-link.active::after,
         .nav-link:hover::after {
             width: 100%;
         }
+
         .nav-link.active {
             color: #6366f1;
             font-weight: 600;
         }
 
-        /* Typewriter Cursor */
+        /* Typewriter Cursor Effect */
         #typewriter::after {
             content: '|';
             animation: blink 0.7s infinite;
             margin-left: 2px;
             color: #6366f1;
         }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Skill Card Hover Effect */
-        .skill-card {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .skill-card:hover {
-            transform: translateY(-14px) scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.4);
+        /* Particles Background Container */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* Project Card Image Zoom */
-        .project-image {
-            transition: transform 0.7s ease;
-        }
-        .project-card:hover .project-image {
-            transform: scale(1.15);
+        /* Pastikan konten di atas particles */
+        main, nav, footer {
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
-<body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white">
+<body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white relative overflow-x-hidden">
 
-    <!-- Particle Background -->
+    <!-- Particles Background -->
     <div id="particles-js"></div>
 
     <!-- NAVBAR -->
@@ -163,7 +147,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-card border-b border-white/5" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block hover:bg-slate-800 hover:text-primary px-3 py-2 rounded-md text-base font-medium">Home</a>
@@ -176,53 +159,53 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section id="home" class="min-h-screen flex items-center justify-center relative pt-16">
-        <div class="text-center px-4 max-w-4xl mx-auto">
-            <p class="text-primary font-medium mb-4 tracking-wider" data-aos="fade-up">HALO, NAMA SAYA</p>
+        <div class="text-center px-4 max-w-4xl mx-auto z-10">
+            <p class="text-primary font-medium mb-4 tracking-wider">HALO, NAMA SAYA</p>
             
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                 Iyuzaki <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Yanagi</span>
             </h1>
             
-            <h2 class="text-xl md:text-2xl text-slate-400 mb-8 min-h-[40px]" data-aos="fade-up" data-aos-delay="300">
+            <h2 class="text-xl md:text-2xl text-slate-400 mb-8 min-h-[40px]">
                 Saya seorang <span id="typewriter" class="text-white font-semibold"></span>
             </h2>
             
-            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
-                <a href="#projects" class="px-8 py-3 rounded-full bg-primary hover:bg-indigo-600 text-white font-semibold transition shadow-lg shadow-indigo-500/30 transform hover:scale-105">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#projects" class="px-8 py-3 rounded-full bg-primary hover:bg-indigo-600 text-white font-semibold transition shadow-lg shadow-indigo-500/30">
                     Lihat Portofolio
                 </a>
-                <a href="#contact" class="px-8 py-3 rounded-full border border-slate-600 hover:border-white text-white font-semibold transition bg-transparent hover:bg-slate-800 transform hover:scale-105">
+                <a href="#contact" class="px-8 py-3 rounded-full border border-slate-600 hover:border-white text-white font-semibold transition bg-transparent hover:bg-slate-800">
                     Hubungi Saya
                 </a>
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
             <a href="#about" class="text-slate-400 hover:text-white transition">
                 <i class="fas fa-chevron-down text-2xl"></i>
             </a>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-20 bg-card/50 backdrop-blur-sm">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-card relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Tentang Saya</h2>
                 <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="relative group" data-aos="fade-right" data-aos-delay="100">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                     <div class="relative w-full h-80 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden">
                         <i class="fas fa-user text-6xl text-slate-500"></i>
                     </div>
                 </div>
 
-                <div data-aos="fade-left" data-aos-delay="200">
+                <div>
                     <h3 class="text-2xl font-semibold text-white mb-4">Perkenalan Singkat</h3>
                     <p class="text-slate-400 leading-relaxed mb-6">
                         Saya adalah seorang profesional yang berdedikasi dengan hasrat tinggi dalam teknologi web modern. 
@@ -246,53 +229,53 @@
         </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="py-20 bg-dark">
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 bg-dark relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Keahlian Teknis</h2>
                 <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                <div class="bg-card p-6 rounded-xl border border-white/5 skill-card text-center group" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3 group-hover:scale-125 transition"></i>
+                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
+                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3 group-hover:scale-110 transition"></i>
                     <h3 class="text-white font-medium">HTML5</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 skill-card text-center group" data-aos="zoom-in" data-aos-delay="150">
-                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3 group-hover:scale-125 transition"></i>
+                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
+                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3 group-hover:scale-110 transition"></i>
                     <h3 class="text-white font-medium">CSS3</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 skill-card text-center group" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fab fa-js text-4xl text-yellow-400 mb-3 group-hover:scale-125 transition"></i>
+                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
+                    <i class="fab fa-js text-4xl text-yellow-400 mb-3 group-hover:scale-110 transition"></i>
                     <h3 class="text-white font-medium">JavaScript</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 skill-card text-center group" data-aos="zoom-in" data-aos-delay="250">
-                    <i class="fab fa-react text-4xl text-cyan-400 mb-3 group-hover:scale-125 transition"></i>
+                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
+                    <i class="fab fa-react text-4xl text-cyan-400 mb-3 group-hover:scale-110 transition"></i>
                     <h3 class="text-white font-medium">React</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 skill-card text-center group" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fab fa-node text-4xl text-green-500 mb-3 group-hover:scale-125 transition"></i>
+                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
+                    <i class="fab fa-node text-4xl text-green-500 mb-3 group-hover:scale-110 transition"></i>
                     <h3 class="text-white font-medium">Node.js</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 skill-card text-center group" data-aos="zoom-in" data-aos-delay="350">
-                    <i class="fab fa-git-alt text-4xl text-red-500 mb-3 group-hover:scale-125 transition"></i>
+                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
+                    <i class="fab fa-git-alt text-4xl text-red-500 mb-3 group-hover:scale-110 transition"></i>
                     <h3 class="text-white font-medium">Git</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-20 bg-card/50 backdrop-blur-sm">
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="py-20 bg-card relative z-10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pengalaman Kerja</h2>
                 <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
             </div>
 
             <div class="relative border-l-2 border-primary/30 ml-4 md:ml-6 space-y-12">
-                <div class="relative pl-8 md:pl-12 group" data-aos="fade-right" data-aos-delay="100">
+                <div class="relative pl-8 md:pl-12 group">
                     <span class="absolute -left-[11px] top-[5px] h-5 w-5 rounded-full bg-card border-2 border-primary group-hover:bg-primary group-hover:scale-110 transition duration-300 shadow-[0_0_0_4px_#1e293b]"></span>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                         <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Senior Web Developer</h3>
@@ -305,7 +288,7 @@
                     </p>
                 </div>
 
-                <div class="relative pl-8 md:pl-12 group" data-aos="fade-right" data-aos-delay="300">
+                <div class="relative pl-8 md:pl-12 group">
                     <span class="absolute -left-[11px] top-[5px] h-5 w-5 rounded-full bg-card border-2 border-primary group-hover:bg-primary group-hover:scale-110 transition duration-300 shadow-[0_0_0_4px_#1e293b]"></span>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                         <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Frontend Developer</h3>
@@ -321,22 +304,21 @@
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="py-20 bg-dark">
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 bg-dark relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Portofolio Proyek</h2>
                 <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-3 project-card" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="h-48 bg-slate-700 relative overflow-hidden">
-                        <i class="fas fa-laptop-code text-5xl text-slate-500 absolute inset-0 flex items-center justify-center project-image"></i>
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <a href="#" class="p-4 bg-primary/90 rounded-full hover:bg-primary transition transform hover:scale-110"><i class="fab fa-github text-2xl"></i></a>
-                            <a href="#" class="p-4 bg-white/90 rounded-full hover:bg-white transition transform hover:scale-110"><i class="fas fa-external-link-alt text-2xl text-dark"></i></a>
+                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/20 transition duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
+                        <i class="fas fa-laptop-code text-4xl text-slate-500"></i>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                            <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                            <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="p-6">
@@ -348,14 +330,13 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-3 project-card" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="h-48 bg-slate-700 relative overflow-hidden">
-                        <i class="fas fa-mobile-alt text-5xl text-slate-500 absolute inset-0 flex items-center justify-center project-image"></i>
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <a href="#" class="p-4 bg-primary/90 rounded-full hover:bg-primary transition transform hover:scale-110"><i class="fab fa-github text-2xl"></i></a>
-                            <a href="#" class="p-4 bg-white/90 rounded-full hover:bg-white transition transform hover:scale-110"><i class="fas fa-external-link-alt text-2xl text-dark"></i></a>
+                
+                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/20 transition duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
+                        <i class="fas fa-mobile-alt text-4xl text-slate-500"></i>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                            <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                            <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="p-6">
@@ -368,13 +349,12 @@
                     </div>
                 </div>
 
-                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-3 project-card" data-aos="zoom-in-up" data-aos-delay="300">
-                    <div class="h-48 bg-slate-700 relative overflow-hidden">
-                        <i class="fas fa-globe text-5xl text-slate-500 absolute inset-0 flex items-center justify-center project-image"></i>
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <a href="#" class="p-4 bg-primary/90 rounded-full hover:bg-primary transition transform hover:scale-110"><i class="fab fa-github text-2xl"></i></a>
-                            <a href="#" class="p-4 bg-white/90 rounded-full hover:bg-white transition transform hover:scale-110"><i class="fas fa-external-link-alt text-2xl text-dark"></i></a>
+                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/20 transition duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
+                        <i class="fas fa-globe text-4xl text-slate-500"></i>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                            <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                            <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="p-6">
@@ -390,16 +370,16 @@
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-20 bg-card/50 backdrop-blur-sm">
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-card relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Hubungi Saya</h2>
                 <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="bg-dark p-8 rounded-xl border border-white/5" data-aos="fade-right" data-aos-delay="100">
+                <div class="bg-dark p-8 rounded-xl border border-white/5">
                     <form onsubmit="event.preventDefault(); alert('Pesan terkirim!');">
                         <div class="mb-6">
                             <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Nama</label>
@@ -413,13 +393,13 @@
                             <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Pesan</label>
                             <textarea id="message" rows="4" class="w-full bg-card border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Tulis pesan Anda..." required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-primary hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg shadow-indigo-500/30 transform hover:scale-105">
+                        <button type="submit" class="w-full bg-primary hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg shadow-indigo-500/30">
                             Kirim Pesan
                         </button>
                     </form>
                 </div>
 
-                <div class="flex flex-col justify-center space-y-8" data-aos="fade-left" data-aos-delay="200">
+                <div class="flex flex-col justify-center space-y-8">
                     <div>
                         <h3 class="text-2xl font-bold text-white mb-4">Mari Berkolaborasi!</h3>
                         <p class="text-slate-400">Saya selalu terbuka untuk mendiskusikan proyek baru atau ide kreatif.</p>
@@ -453,43 +433,50 @@
     <!-- FOOTER -->
     <footer class="bg-darker py-8 border-t border-white/5 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-slate-500 text-sm">© <span id="year"></span> YanaMiku. All Rights Reserved.</p>
+            <p class="text-slate-500 text-sm">&copy; <span id="year"></span> YanaMiku. All Rights Reserved.</p>
             <a href="#home" class="group flex items-center text-slate-400 hover:text-primary transition text-sm">
                 Back to Top 
-                <span class="ml-2 w-8 h-8 rounded bg-card flex items-center justify-center border border-white/5 group-hover:border-primary transition transform hover:scale-110"><i class="fas fa-arrow-up text-xs"></i></span>
+                <span class="ml-2 w-8 h-8 rounded bg-card flex items-center justify-center border border-white/5 group-hover:border-primary transition"><i class="fas fa-arrow-up text-xs"></i></span>
             </a>
         </div>
     </footer>
 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <!-- JAVASCRIPT -->
     <script>
-        // Update tahun
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Update tahun di footer
+        const updateYear = () => {
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        };
 
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-        });
+        // Mobile Menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
 
         // Typewriter Effect
         const typewriterElement = document.getElementById('typewriter');
         const words = ["Full Stack Developer", "UI/UX Designer", "Freelancer", "Tech Enthusiast"];
-        let wordIndex = 0, charIndex = 0, isDeleting = false, typeSpeed = 150;
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 150;
 
         function type() {
             const currentWord = words[wordIndex];
-            typewriterElement.textContent = isDeleting 
-                ? currentWord.substring(0, charIndex - 1)
-                : currentWord.substring(0, charIndex + 1);
             
-            charIndex += isDeleting ? -1 : 1;
-            typeSpeed = isDeleting ? 50 : 150;
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 150;
+            }
 
             if (!isDeleting && charIndex === currentWord.length) {
                 isDeleting = true;
@@ -499,22 +486,48 @@
                 wordIndex = (wordIndex + 1) % words.length;
                 typeSpeed = 500;
             }
+
             setTimeout(type, typeSpeed);
         }
 
-        // Inisialisasi Particles.js (elegan dan ringan)
+        // Particles.js Configuration
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": ["#6366f1", "#818cf8", "#a5b4fc"] },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1 } },
-                "size": { "value": 3, "random": true },
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": ["#6366f1", "#818cf8", "#a5b4fc"] // warna variasi indigo
+                },
+                "shape": {
+                    "type": "circle",
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                    }
+                },
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
                     "color": "#6366f1",
-                    "opacity": 0.4,
+                    "opacity": 0.3,
                     "width": 1
                 },
                 "move": {
@@ -524,56 +537,67 @@
                     "random": true,
                     "straight": false,
                     "out_mode": "out",
-                    "bounce": false
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                    }
                 }
             },
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
                     "resize": true
                 },
                 "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 0.7 } },
-                    "push": { "particles_nb": 4 }
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.7
+                        }
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
                 }
             },
             "retina_detect": true
         });
 
-        // Inisialisasi AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: 'ease-out-cubic',
-            offset: 120
-        });
+        // Inisialisasi saat halaman dimuat
+        window.onload = () => {
+            updateYear();
+            type();
+            
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            sections.forEach(section => observer.observe(section));
+        };
 
-        // Mulai typewriter
-        type();
-
-        // Active nav link berdasarkan section
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, { threshold: 0.3 });
-        sections.forEach(section => observer.observe(section));
-
-        // Navbar shadow saat scroll
+        // Navbar shadow on scroll
         window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('shadow-lg', window.scrollY > 50);
+            const navbar = document.getElementById('navbar');
+            window.scrollY > 50 ? navbar.classList.add('shadow-lg') : navbar.classList.remove('shadow-lg');
         });
     </script>
 </body>
