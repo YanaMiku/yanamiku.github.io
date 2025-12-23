@@ -1,92 +1,46 @@
-# Hi, I’m YanaMiku 👋
+# Portofolio Profesional - YanaMiku
 
-> Crafting delightful experiences on the web — from elegant HTML to memorable user journeys.
+Sebuah proyek portofolio web modern, responsif, dan elegan yang dibangun menggunakan HTML5, Tailwind CSS, dan JavaScript vanilla. Proyek ini dirancang untuk menampilkan profil profesional, keahlian teknis, pengalaman kerja, dan proyek-proyek yang telah dikerjakan.
 
-[![Website](https://img.shields.io/badge/website-yanamiku.github.io-blue?logo=google-chrome&style=for-the-badge)](https://yanamiku.github.io)
-[![Top Language: HTML](https://img.shields.io/badge/top--language-HTML-orange?style=for-the-badge)](#)
-[![Profile Views](https://komarev.com/ghpvc/?username=YanaMiku&style=flat-square)](https://github.com/YanaMiku)
+## 🚀 Fitur Utama
 
----
+* **Desain Modern & Dark Mode**: Menggunakan skema warna Slate dan Indigo yang profesional.
+* **Typewriter Effect**: Efek teks mengetik pada bagian Hero untuk menampilkan peran profesional.
+* **Navigasi Halus (Smooth Scroll)**: Perpindahan antar bagian halaman yang mulus.
+* **Responsif**: Dioptimalkan untuk perangkat mobile, tablet, dan desktop.
+* **Halaman Error Kustom**: Menyertakan halaman 404 Not Found dengan desain yang konsisten.
+* **Form Kontak & Link Aktif**: Integrasi langsung ke WhatsApp dan Email.
 
-## About Me
-Hello — I’m Yana (GitHub: `YanaMiku`) — a passionate web creator focused on clean, accessible HTML-first pages and delightful front-end experiences. I love turning ideas into lightweight, fast, and beautiful web projects.
+## 🛠️ Teknologi yang Digunakan
 
-- 🔭 I’m currently building and refining my portfolio site and static web experiments.
-- 🌱 I enjoy learning progressive enhancement, accessibility, and performance optimizations.
-- 💬 Ask me about building semantic HTML, content-first design, and polishing small interactions.
-- ⚡ Fun fact: I prefer tiny, maintainable code over large frameworks when it makes sense.
+* **Framework CSS**: Tailwind CSS (via CDN)
+* **Font**: Poppins (Google Fonts)
+* **Icon**: FontAwesome 6.4.0
+* **Bahasa**: HTML5, JavaScript (ES6+)
 
----
+## 📁 Struktur File
 
-## What I Do
-- Build semantic, accessible HTML pages and content-driven micro-sites.
-- Prototype UI with performance and simplicity first.
-- Improve content structure for better SEO and reading experience.
-- Collaborate on small web projects and community documentation.
+* `index.html` - Halaman utama portofolio.
+* `404.html` - Halaman khusus jika URL tidak ditemukan.
+* `README.md` - Dokumentasi proyek.
 
----
+## 💻 Penggunaan Lokal
 
-## Core Skills
-- HTML (semantic structure, microformats, accessibility)
-- CSS (layout fundamentals, responsive patterns)
-- Basic JavaScript (progressive enhancement)
-- Content design & information architecture
-- Performance-minded front-end approaches
+1.  Clone repository ini:
+    ```bash
+    git clone [https://github.com/username/repository-name.git](https://github.com/username/repository-name.git)
+    ```
+2.  Buka direktori proyek:
+    ```bash
+    cd repository-name
+    ```
+3.  Jalankan file `index.html` langsung di browser Anda atau gunakan ekstensi "Live Server" di VS Code.
 
-(If you want badges for each skill, I can add visually-stylized ones or a skills grid.)
+## 📄 Lisensi
 
----
-
-## Featured Projects
-Here are a few highlights. Replace these with your favorite projects (title, one-line description, link):
-
-- Project Alpha — A content-first static site focused on readability. ([Live Demo](#) • [Source](#))
-- Micro Widget — Tiny vanilla JS widget for embedding lightweight interactions. ([Source](#))
-- Accessible Template — Starter template with semantic patterns and accessibility baked in. ([Source](#))
-
-Want these formatted with live screenshots, demo links, and tech tags? Share the project names/links and I’ll add them.
+Proyek ini dibuat oleh **YanaMiku**. Anda bebas menggunakannya untuk referensi atau pengembangan pribadi.
 
 ---
-
-## How I Work
-- Start with content: structure HTML for meaning and clarity.
-- Make it accessible: keyboard-first, ARIA where needed, readable markup.
-- Optimize: keep bundles small, defer non-essential assets, prefer native capabilities.
-- Iterate: usability testing, feedback loops, and incremental improvements.
-
----
-
-## How to Reach Me
-Choose how you want people to contact you and I’ll add the exact links:
-
-- Email: hello@yanamiku.io (or use a public contact form)
-- LinkedIn: [Your LinkedIn]()
-- Twitter / X: [@yourhandle]()
-- Portfolio: https://yanamiku.github.io
-
----
-
-## Want to Collaborate?
-I’m open to short-term freelance, small team projects, and documentation contributions. If you have an idea, issue, or simply want to say hi — open an issue or drop me a line.
-
----
-
-## GitHub Activity & Extras
-- I keep my profile light and content-focused. If you’d like, I can add:
-  - GitHub activity stats (dynamic cards)
-  - A timeline of recent repositories
-  - A showcase section with live embeds/screenshots
-
----
-
-## Goals & Roadmap
-- Polish portfolio with case studies and performance reports.
-- Create a small collection of accessible HTML patterns as public templates.
-- Learn and document a11y testing techniques and automated checks.
-
----
-
-## Footer
-Thanks for visiting — feel free to fork my templates, open issues with suggestions, or connect!
-
-Made with ❤️ and semantic HTML — YanaMiku
+**Kontak:**
+Email: businessyanamiku@gmail.com
+WhatsApp: +62 857 9358 9243
