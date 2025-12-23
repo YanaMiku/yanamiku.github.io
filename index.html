@@ -111,6 +111,18 @@
             position: relative;
             z-index: 10;
         }
+
+        /* 3D Tilt Effect Container */
+        .tilt-container {
+            perspective: 1200px;
+        }
+
+        .tilt-card {
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
     </style>
 </head>
 <body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white relative overflow-x-hidden">
@@ -198,11 +210,11 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="relative w-full h-80 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden">
+                <div class="tilt-container relative group">
+                    <div class="tilt-card relative w-full h-80 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden" id="about-image-card">
                         <i class="fas fa-user text-6xl text-slate-500"></i>
                     </div>
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
                 </div>
 
                 <div>
@@ -313,56 +325,65 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/20 transition duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
-                        <i class="fas fa-laptop-code text-4xl text-slate-500"></i>
-                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
-                            <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
-                            <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
+                <!-- Project Card 1 -->
+                <div class="tilt-container group">
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full" id="project-card-1">
+                        <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
+                            <i class="fas fa-laptop-code text-4xl text-slate-500"></i>
+                            <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                                <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                                <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">E-Commerce App</h3>
-                        <p class="text-slate-400 text-sm mb-4">Aplikasi belanja online dengan fitur keranjang real-time.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">React</span>
-                            <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/20 transition duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
-                        <i class="fas fa-mobile-alt text-4xl text-slate-500"></i>
-                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
-                            <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
-                            <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Finance Dashboard</h3>
-                        <p class="text-slate-400 text-sm mb-4">Dashboard analitik keuangan dengan grafik interaktif.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Vue.js</span>
-                            <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Chart.js</span>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">E-Commerce App</h3>
+                            <p class="text-slate-400 text-sm mb-4">Aplikasi belanja online dengan fitur keranjang real-time.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">React</span>
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Tailwind</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg hover:shadow-primary/20 transition duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
-                        <i class="fas fa-globe text-4xl text-slate-500"></i>
-                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
-                            <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
-                            <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
+                <!-- Project Card 2 -->
+                <div class="tilt-container group">
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full" id="project-card-2">
+                        <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
+                            <i class="fas fa-mobile-alt text-4xl text-slate-500"></i>
+                            <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                                <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                                <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Finance Dashboard</h3>
+                            <p class="text-slate-400 text-sm mb-4">Dashboard analitik keuangan dengan grafik interaktif.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Vue.js</span>
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Chart.js</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Company Profile</h3>
-                        <p class="text-slate-400 text-sm mb-4">Website profil perusahaan korporat dengan CMS kustom.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Laravel</span>
-                            <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Bootstrap</span>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="tilt-container group">
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full" id="project-card-3">
+                        <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
+                            <i class="fas fa-globe text-4xl text-slate-500"></i>
+                            <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                                <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                                <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Company Profile</h3>
+                            <p class="text-slate-400 text-sm mb-4">Website profil perusahaan korporat dengan CMS kustom.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Laravel</span>
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Bootstrap</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -446,9 +467,7 @@
         // Update tahun di footer
         const updateYear = () => {
             const yearElement = document.getElementById('year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
+            if (yearElement) yearElement.textContent = new Date().getFullYear();
         };
 
         // Mobile Menu
@@ -501,7 +520,7 @@
                     }
                 },
                 "color": {
-                    "value": ["#6366f1", "#818cf8", "#a5b4fc"] // warna variasi indigo
+                    "value": ["#6366f1", "#818cf8", "#a5b4fc"]
                 },
                 "shape": {
                     "type": "circle",
@@ -570,6 +589,57 @@
             },
             "retina_detect": true
         });
+
+        // === Optimized 3D Tilt Effect ===
+        const tiltCards = document.querySelectorAll('.tilt-card');
+
+        let lastUpdate = 0;
+        const throttleMs = 16; // ~60fps
+
+        function updateTilt(card, x, y) {
+            const rect = card.getBoundingClientRect();
+            const relX = x - rect.left;
+            const relY = y - rect.top;
+            
+            const rotateY = ((relX / rect.width) - 0.5) * 24;
+            const rotateX = ((relY / rect.height) - 0.5) * -18;
+            
+            card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(35px) scale(1.025)`;
+        }
+
+        function handleMouseMove(e) {
+            const now = performance.now();
+            if (now - lastUpdate < throttleMs) return;
+            lastUpdate = now;
+
+            const x = e.clientX;
+            const y = e.clientY;
+
+            tiltCards.forEach(card => {
+                if (card.matches(':hover')) {
+                    updateTilt(card, x, y);
+                }
+            });
+        }
+
+        function resetTilt(card) {
+            card.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0px) scale(1)';
+        }
+
+        // Apply optimized tilt effect
+        tiltCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                resetTilt(card);
+            });
+        });
+
+        // Global mousemove listener with throttling
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
 
         // Inisialisasi saat halaman dimuat
         window.onload = () => {
