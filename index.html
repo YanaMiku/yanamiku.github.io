@@ -210,15 +210,26 @@
                 0 0 110px rgba(99, 102, 241, 0.4);
         }
 
-        /* SKELETON LOADING ANIMATION */
-        .skeleton {
-            background: linear-gradient(90deg, #1e293b 25%, #252f42 50%, #1e293b 75%);
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s infinite linear;
+        /* === SKELETON LOADING ANIMATION === */
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
             border-radius: inherit;
         }
 
-        @keyframes skeleton-loading {
+        .skeleton-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #1e293b 25%, #252f42 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.8s infinite linear;
+            border-radius: inherit;
+        }
+
+        @keyframes skeleton-shimmer {
             0% {
                 background-position: 200% 0;
             }
@@ -227,39 +238,13 @@
             }
         }
 
-        .img-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: inherit;
-            width: 100%;
-            height: 100%;
-        }
-
-        .img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .loaded-img {
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.6s ease;
         }
 
-        .img-wrapper img.loaded {
+        .loaded-img.loaded {
             opacity: 1;
-        }
-
-        .img-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: #1e293b;
-            border-radius: inherit;
-        }
-
-        .img-wrapper .skeleton {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
         }
     </style>
 </head>
@@ -350,9 +335,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="tilt-container relative">
                     <div class="about-image-card tilt-card relative bg-slate-700 rounded-lg overflow-hidden shadow-2xl" id="about-image-card">
-                        <div class="img-wrapper aspect-16-9">
-                            <div class="skeleton"></div>
-                            <img src="https://i.ibb.co/Z6YHJS0d/Gemini-Generated-Image-768c88768c88768c.png" alt="Foto Iyuzaki Yanagi" class="object-cover">
+                        <div class="image-wrapper rounded-lg">
+                            <div class="skeleton-loader"></div>
+                            <img src="https://i.ibb.co/Z6YHJS0d/Gemini-Generated-Image-768c88768c88768c.png" 
+                                 alt="Foto Iyuzaki Yanagi" 
+                                 class="w-full aspect-16-9 object-cover loaded-img">
                         </div>
                     </div>
                 </div>
@@ -480,10 +467,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="tilt-container group">
                     <div class="project-card tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
-                        <div class="relative overflow-hidden">
-                            <div class="img-wrapper aspect-16-9">
-                                <div class="skeleton"></div>
-                                <img src="https://qu.ax/x/HJKP4.png" alt="Preview 3D Rubik's Cube" class="object-cover">
+                        <div class="relative overflow-hidden rounded-t-xl">
+                            <div class="image-wrapper">
+                                <div class="skeleton-loader"></div>
+                                <img src="https://qu.ax/x/HJKP4.png" alt="Preview 3D Rubik's Cube" class="w-full aspect-16-9 object-cover loaded-img">
                             </div>
                             <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
                                 <a href="https://github.com/YanaMiku/rubik" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
@@ -505,10 +492,10 @@
 
                 <div class="tilt-container group">
                     <div class="project-card tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
-                        <div class="relative overflow-hidden">
-                            <div class="img-wrapper aspect-16-9">
-                                <div class="skeleton"></div>
-                                <img src="https://qu.ax/x/Go2aJ.png" alt="Preview CHESS" class="object-cover">
+                        <div class="relative overflow-hidden rounded-t-xl">
+                            <div class="image-wrapper">
+                                <div class="skeleton-loader"></div>
+                                <img src="https://qu.ax/x/Go2aJ.png" alt="Preview CHESS" class="w-full aspect-16-9 object-cover loaded-img">
                             </div>
                             <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
                                 <a href="https://github.com/YanaMiku/chess" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
@@ -529,10 +516,10 @@
 
                 <div class="tilt-container group">
                     <div class="project-card tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
-                        <div class="relative overflow-hidden">
-                            <div class="img-wrapper aspect-16-9">
-                                <div class="skeleton"></div>
-                                <img src="https://qu.ax/x/6YHHz.png" alt="Preview Company Profile" class="object-cover">
+                        <div class="relative overflow-hidden rounded-t-xl">
+                            <div class="image-wrapper">
+                                <div class="skeleton-loader"></div>
+                                <img src="https://qu.ax/x/6YHHz.png" alt="Preview TicTacToe" class="w-full aspect-16-9 object-cover loaded-img">
                             </div>
                             <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
                                 <a href="https://github.com/YanaMiku/tictactoe" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
@@ -753,22 +740,26 @@
 
         document.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-        // SKELETON LOADING: Hapus skeleton saat gambar selesai dimuat
-        document.querySelectorAll('.img-wrapper img').forEach(img => {
-            if (img.complete && img.naturalHeight !== 0) {
-                img.classList.add('loaded');
-                img.parentElement.querySelector('.skeleton')?.remove();
-            } else {
-                img.addEventListener('load', function() {
-                    this.classList.add('loaded');
-                    const skeleton = this.parentElement.querySelector('.skeleton');
-                    if (skeleton) skeleton.remove();
-                });
-
-                img.addEventListener('error', function() {
-                    this.parentElement.querySelector('.skeleton')?.remove();
-                });
-            }
+        // === LOADING ANIMATION UNTUK GAMBAR ===
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll('.loaded-img');
+            images.forEach(img => {
+                if (img.complete && img.naturalHeight !== 0) {
+                    img.classList.add('loaded');
+                    img.parentElement.querySelector('.skeleton-loader')?.remove();
+                } else {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                        const skeleton = this.parentElement.querySelector('.skeleton-loader');
+                        if (skeleton) skeleton.remove();
+                    });
+                    img.addEventListener('error', function() {
+                        const skeleton = this.parentElement.querySelector('.skeleton-loader');
+                        if (skeleton) skeleton.remove();
+                        this.classList.add('loaded'); // tampilkan meski error
+                    });
+                }
+            });
         });
 
         // Inisialisasi saat halaman dimuat
