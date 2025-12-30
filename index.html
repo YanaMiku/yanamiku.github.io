@@ -18,9 +18,6 @@
     
     <!-- Particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-    <!-- Sketchfab Viewer API -->
-    <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
     
     <!-- Konfigurasi Tailwind Custom -->
     <script>
@@ -212,42 +209,12 @@
                 0 0 80px rgba(99, 102, 241, 0.6),
                 0 0 110px rgba(99, 102, 241, 0.4);
         }
-
-        /* 3D Model Sketchfab di Pojok Kanan Bawah */
-        #sketchfab-model-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 300px;
-            z-index: 20;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        #sketchfab-model-container:hover {
-            transform: scale(1.05);
-        }
-
-        #api-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 </head>
 <body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white relative overflow-x-hidden">
 
     <!-- Particles Background dengan Parallax -->
     <div id="particles-js"></div>
-
-    <!-- 3D Model Sketchfab di Pojok Kanan Bawah -->
-    <div id="sketchfab-model-container">
-        <iframe id="api-frame" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
-    </div>
 
     <!-- NAVBAR -->
     <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-white/5">
@@ -717,52 +684,6 @@
         });
 
         document.addEventListener('mousemove', handleMouseMove, { passive: true });
-
-        // Sketchfab Viewer API Initialization & Scroll Rotation
-        let api; // Global API object
-        let lastScrollY = window.scrollY;
-
-        const iframe = document.getElementById('api-frame');
-        const version = '1.12.1';
-        const client = new Sketchfab(version, iframe);
-
-        const uid = '8d913bda48f84217902e6829982c494f'; // Model ID (ganti jika ingin model lain)
-
-        client.init(uid, {
-            success: function onSuccess(sketchfabAPI) {
-                api = sketchfabAPI;
-                api.start();
-                api.addEventListener('viewerready', function() {
-                    console.log('Sketchfab Viewer Ready');
-                    // Hide default UI controls untuk tampilan lebih bersih
-                    api.hideUI(['bottom']);
-                });
-            },
-            error: function onError() {
-                console.error('Sketchfab API error');
-            },
-            ui_controls: 0,
-            ui_infos: 0,
-            ui_hint: 0,
-            ui_stop: 0,
-            autostart: 1,
-            preload: 1,
-            transparent: 0
-        });
-
-        // Scroll-based Y-axis rotation (horizontal orbit)
-        window.addEventListener('scroll', () => {
-            if (!api) return;
-
-            const currentScrollY = window.scrollY;
-            const delta = currentScrollY - lastScrollY;
-
-            // Rotasi horizontal (Y-axis) berdasarkan delta scroll
-            // Nilai 0.005 bisa disesuaikan untuk kecepatan rotasi
-            api.orbit(delta * 0.005, 0); // yaw (horizontal), pitch (vertical = 0)
-
-            lastScrollY = currentScrollY;
-        });
 
         // Inisialisasi saat halaman dimuat
         window.onload = () => {
