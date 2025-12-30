@@ -123,6 +123,60 @@
             will-change: transform;
             backface-visibility: hidden;
         }
+
+        /* Aspect Ratio 16:9 untuk gambar */
+        .aspect-16-9 {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Neon Shadow untuk Skills Card */
+        .skill-card {
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.6),  /* Indigo-500 neon */
+                        0 0 60px rgba(99, 102, 241, 0.4);
+        }
+
+        .skill-card i {
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Contact Card Background */
+        .contact-card {
+            background-color: #1e293b; /* card color */
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-card:hover {
+            background-color: #252f42;
+            border-color: #6366f1;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Animasi Pulsate pada Garis Bawah Section */
+        .section-line {
+            animation: pulsate 2s infinite ease-in-out;
+        }
+
+        @keyframes pulsate {
+            0% { transform: scaleX(1); }
+            50% { transform: scaleX(1.3); }
+            100% { transform: scaleX(1); }
+        }
     </style>
 </head>
 <body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white relative overflow-x-hidden">
@@ -206,15 +260,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Tentang Saya</h2>
-                <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
+                <div class="w-20 h-1 bg-primary mx-auto rounded section-line"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="tilt-container relative group">
-                    <div class="tilt-card relative w-full h-80 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden" id="about-image-card">
-                        <i class="fas fa-user text-6xl text-slate-500"></i>
+                <div class="tilt-container relative">
+                    <div class="tilt-card relative bg-slate-700 rounded-lg overflow-hidden shadow-2xl" id="about-image-card">
+                        <img src="https://picsum.photos/800/450?random=1" alt="Foto Iyuzaki Yanagi" class="w-full aspect-16-9 object-cover">
                     </div>
-                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
                 </div>
 
                 <div>
@@ -246,32 +299,32 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Keahlian Teknis</h2>
-                <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
+                <div class="w-20 h-1 bg-primary mx-auto rounded section-line"></div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
-                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3 group-hover:scale-110 transition"></i>
+                <div class="skill-card bg-card p-6 rounded-xl border border-white/5 text-center">
+                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
                     <h3 class="text-white font-medium">HTML5</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
-                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3 group-hover:scale-110 transition"></i>
+                <div class="skill-card bg-card p-6 rounded-xl border border-white/5 text-center">
+                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i>
                     <h3 class="text-white font-medium">CSS3</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
-                    <i class="fab fa-js text-4xl text-yellow-400 mb-3 group-hover:scale-110 transition"></i>
+                <div class="skill-card bg-card p-6 rounded-xl border border-white/5 text-center">
+                    <i class="fab fa-js text-4xl text-yellow-400 mb-3"></i>
                     <h3 class="text-white font-medium">JavaScript</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
-                    <i class="fab fa-react text-4xl text-cyan-400 mb-3 group-hover:scale-110 transition"></i>
+                <div class="skill-card bg-card p-6 rounded-xl border border-white/5 text-center">
+                    <i class="fab fa-react text-4xl text-cyan-400 mb-3"></i>
                     <h3 class="text-white font-medium">React</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
-                    <i class="fab fa-node text-4xl text-green-500 mb-3 group-hover:scale-110 transition"></i>
+                <div class="skill-card bg-card p-6 rounded-xl border border-white/5 text-center">
+                    <i class="fab fa-node text-4xl text-green-500 mb-3"></i>
                     <h3 class="text-white font-medium">Node.js</h3>
                 </div>
-                <div class="bg-card p-6 rounded-xl border border-white/5 hover:-translate-y-2 hover:border-primary/50 transition duration-300 text-center group">
-                    <i class="fab fa-git-alt text-4xl text-red-500 mb-3 group-hover:scale-110 transition"></i>
+                <div class="skill-card bg-card p-6 rounded-xl border border-white/5 text-center">
+                    <i class="fab fa-git-alt text-4xl text-red-500 mb-3"></i>
                     <h3 class="text-white font-medium">Git</h3>
                 </div>
             </div>
@@ -283,7 +336,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pengalaman Kerja</h2>
-                <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
+                <div class="w-20 h-1 bg-primary mx-auto rounded section-line"></div>
             </div>
 
             <div class="relative border-l-2 border-primary/30 ml-4 md:ml-6 space-y-12">
@@ -312,6 +365,20 @@
                         • Bekerja sama dengan klien internasional.
                     </p>
                 </div>
+
+                <!-- Pengalaman Kerja Baru -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <span class="absolute -left-[11px] top-[5px] h-5 w-5 rounded-full bg-card border-2 border-primary group-hover:bg-primary group-hover:scale-110 transition duration-300 shadow-[0_0_0_4px_#1e293b]"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Full Stack Developer</h3>
+                        <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0 border border-primary/20">2017 - 2019</span>
+                    </div>
+                    <h4 class="text-lg text-slate-400 mb-3">Startup Inovasi Digital</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        • Mengembangkan aplikasi mobile-first dengan React Native dan backend Node.js.<br>
+                        • Implementasi fitur autentikasi dan payment gateway.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -321,15 +388,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Portofolio Proyek</h2>
-                <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
+                <div class="w-20 h-1 bg-primary mx-auto rounded section-line"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project Card 1 -->
                 <div class="tilt-container group">
-                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full" id="project-card-1">
-                        <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
-                            <i class="fas fa-laptop-code text-4xl text-slate-500"></i>
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/800/450?random=2" alt="Preview E-Commerce App" class="w-full aspect-16-9 object-cover">
                             <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
                                 <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
                                 <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
@@ -348,9 +415,9 @@
 
                 <!-- Project Card 2 -->
                 <div class="tilt-container group">
-                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full" id="project-card-2">
-                        <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
-                            <i class="fas fa-mobile-alt text-4xl text-slate-500"></i>
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/800/450?random=3" alt="Preview Finance Dashboard" class="w-full aspect-16-9 object-cover">
                             <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
                                 <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
                                 <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
@@ -369,9 +436,9 @@
 
                 <!-- Project Card 3 -->
                 <div class="tilt-container group">
-                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full" id="project-card-3">
-                        <div class="h-48 bg-slate-700 w-full flex items-center justify-center overflow-hidden relative">
-                            <i class="fas fa-globe text-4xl text-slate-500"></i>
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/800/450?random=4" alt="Preview Company Profile" class="w-full aspect-16-9 object-cover">
                             <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
                                 <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
                                 <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
@@ -387,6 +454,28 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project Card 4 (Baru) -->
+                <div class="tilt-container group">
+                    <div class="tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/800/450?random=5" alt="Preview Task Management App" class="w-full aspect-16-9 object-cover">
+                            <div class="absolute inset-0 bg-dark/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 gap-4">
+                                <a href="#" class="p-3 bg-primary text-white rounded-full hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+                                <a href="#" class="p-3 bg-white text-dark rounded-full hover:bg-slate-200 transition"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Task Management App</h3>
+                            <p class="text-slate-400 text-sm mb-4">Aplikasi manajemen tugas tim dengan fitur drag-and-drop dan notifikasi real-time.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Next.js</span>
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Prisma</span>
+                                <span class="text-xs px-2 py-1 bg-dark text-primary rounded border border-primary/20">Socket.io</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -396,7 +485,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Hubungi Saya</h2>
-                <div class="w-20 h-1 bg-primary mx-auto rounded"></div>
+                <div class="w-20 h-1 bg-primary mx-auto rounded section-line"></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -425,10 +514,10 @@
                         <h3 class="text-2xl font-bold text-white mb-4">Mari Berkolaborasi!</h3>
                         <p class="text-slate-400">Saya selalu terbuka untuk mendiskusikan proyek baru atau ide kreatif.</p>
                     </div>
-                    <div class="space-y-4">
-                        <a href="mailto:businessyanamiku@gmail.com" class="flex items-center space-x-4 group p-2 rounded-lg hover:bg-slate-800 transition duration-300">
-                            <div class="w-12 h-12 bg-dark rounded-full flex items-center justify-center text-primary border border-white/5 group-hover:border-primary transition duration-300">
-                                <i class="fas fa-envelope text-xl"></i>
+                    <div class="space-y-6">
+                        <a href="mailto:businessyanamiku@gmail.com" class="contact-card flex items-center space-x-4 group">
+                            <div class="w-14 h-14 bg-dark rounded-full flex items-center justify-center text-primary border border-white/5 group-hover:border-primary transition duration-300 flex-shrink-0">
+                                <i class="fas fa-envelope text-2xl"></i>
                             </div>
                             <div>
                                 <h4 class="text-white font-medium group-hover:text-primary transition">Email</h4>
@@ -436,9 +525,9 @@
                             </div>
                         </a>
                         
-                        <a href="https://wa.me/6285793589243" target="_blank" class="flex items-center space-x-4 group p-2 rounded-lg hover:bg-slate-800 transition duration-300">
-                            <div class="w-12 h-12 bg-dark rounded-full flex items-center justify-center text-primary border border-white/5 group-hover:border-primary transition duration-300">
-                                <i class="fab fa-whatsapp text-2xl"></i>
+                        <a href="https://wa.me/6285793589243" target="_blank" rel="noopener noreferrer" class="contact-card flex items-center space-x-4 group">
+                            <div class="w-14 h-14 bg-dark rounded-full flex items-center justify-center text-primary border border-white/5 group-hover:border-primary transition duration-300 flex-shrink-0">
+                                <i class="fab fa-whatsapp text-3xl"></i>
                             </div>
                             <div>
                                 <h4 class="text-white font-medium group-hover:text-primary transition">WhatsApp</h4>
@@ -512,89 +601,33 @@
         // Particles.js Configuration
         particlesJS("particles-js", {
             "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": ["#6366f1", "#818cf8", "#a5b4fc"]
-                },
-                "shape": {
-                    "type": "circle",
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#6366f1",
-                    "opacity": 0.3,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1.5,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                    }
-                }
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#6366f1", "#818cf8", "#a5b4fc"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#6366f1", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
             },
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
                     "resize": true
                 },
                 "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 0.7
-                        }
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    }
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.7 } },
+                    "push": { "particles_nb": 4 }
                 }
             },
             "retina_detect": true
         });
 
-        // === Optimized 3D Tilt Effect ===
+        // Optimized 3D Tilt Effect
         const tiltCards = document.querySelectorAll('.tilt-card');
-
         let lastUpdate = 0;
-        const throttleMs = 16; // ~60fps
+        const throttleMs = 16;
 
         function updateTilt(card, x, y) {
             const rect = card.getBoundingClientRect();
@@ -626,7 +659,6 @@
             card.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0px) scale(1)';
         }
 
-        // Apply optimized tilt effect
         tiltCards.forEach(card => {
             card.addEventListener('mouseenter', () => {
                 card.style.transition = 'transform 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
@@ -638,7 +670,6 @@
             });
         });
 
-        // Global mousemove listener with throttling
         document.addEventListener('mousemove', handleMouseMove, { passive: true });
 
         // Inisialisasi saat halaman dimuat
@@ -667,7 +698,11 @@
         // Navbar shadow on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            window.scrollY > 50 ? navbar.classList.add('shadow-lg') : navbar.classList.remove('shadow-lg');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
         });
     </script>
 </body>
