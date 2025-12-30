@@ -95,7 +95,7 @@
             50% { opacity: 0; }
         }
 
-        /* Particles Background Container */
+        /* Parallax Background untuk Particles */
         #particles-js {
             position: fixed;
             top: 0;
@@ -104,6 +104,7 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
+            transform: translateZ(0);
         }
 
         /* Pastikan konten di atas particles */
@@ -139,8 +140,9 @@
 
         .skill-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.6),  /* Indigo-500 neon */
-                        0 0 60px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.8),  
+                        0 0 60px rgba(99, 102, 241, 0.6),
+                        0 0 90px rgba(99, 102, 241, 0.4);
         }
 
         .skill-card i {
@@ -153,7 +155,7 @@
 
         /* Contact Card Background */
         .contact-card {
-            background-color: #1e293b; /* card color */
+            background-color: #1e293b;
             border-radius: 12px;
             padding: 16px;
             transition: all 0.3s ease;
@@ -164,7 +166,7 @@
             background-color: #252f42;
             border-color: #6366f1;
             transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
         }
 
         /* Animasi Pulsate pada Garis Bawah Section */
@@ -178,7 +180,7 @@
             100% { transform: scaleX(1); }
         }
 
-        /* Neon Shadow untuk Project Card */
+        /* Neon Shadow Intens untuk Project Card */
         .project-card {
             position: relative;
             transition: all 0.5s ease;
@@ -187,12 +189,13 @@
         .project-card:hover {
             transform: translateY(-12px);
             box-shadow: 
-                0 0 20px rgba(99, 102, 241, 0.5),
-                0 0 40px rgba(99, 102, 241, 0.4),
-                0 0 60px rgba(99, 102, 241, 0.3);
+                0 0 25px rgba(99, 102, 241, 0.8),
+                0 0 50px rgba(99, 102, 241, 0.7),
+                0 0 80px rgba(99, 102, 241, 0.6),
+                0 0 110px rgba(99, 102, 241, 0.4);
         }
 
-        /* Neon Shadow untuk About Image Card (sama dengan project card) */
+        /* Neon Shadow Intens untuk About Image Card */
         .about-image-card {
             position: relative;
             transition: all 0.5s ease;
@@ -201,15 +204,16 @@
         .about-image-card:hover {
             transform: translateY(-12px);
             box-shadow: 
-                0 0 20px rgba(99, 102, 241, 0.5),
-                0 0 40px rgba(99, 102, 241, 0.4),
-                0 0 60px rgba(99, 102, 241, 0.3);
+                0 0 25px rgba(99, 102, 241, 0.8),
+                0 0 50px rgba(99, 102, 241, 0.7),
+                0 0 80px rgba(99, 102, 241, 0.6),
+                0 0 110px rgba(99, 102, 241, 0.4);
         }
     </style>
 </head>
 <body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white relative overflow-x-hidden">
 
-    <!-- Particles Background -->
+    <!-- Particles Background dengan Parallax -->
     <div id="particles-js"></div>
 
     <!-- NAVBAR -->
@@ -394,7 +398,6 @@
                     </p>
                 </div>
 
-                <!-- Pengalaman Kerja Baru -->
                 <div class="relative pl-8 md:pl-12 group">
                     <span class="absolute -left-[11px] top-[5px] h-5 w-5 rounded-full bg-card border-2 border-primary group-hover:bg-primary group-hover:scale-110 transition duration-300 shadow-[0_0_0_4px_#1e293b]"></span>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
@@ -420,7 +423,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
                 <div class="tilt-container group">
                     <div class="project-card tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
                         <div class="relative overflow-hidden">
@@ -441,7 +443,6 @@
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
                 <div class="tilt-container group">
                     <div class="project-card tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
                         <div class="relative overflow-hidden">
@@ -462,7 +463,6 @@
                     </div>
                 </div>
 
-                <!-- Project Card 3 -->
                 <div class="tilt-container group">
                     <div class="project-card tilt-card bg-card rounded-xl overflow-hidden border border-white/5 shadow-lg h-full">
                         <div class="relative overflow-hidden">
@@ -628,6 +628,13 @@
                 }
             },
             "retina_detect": true
+        });
+
+        // Efek Parallax pada Background Particles
+        window.addEventListener('scroll', () => {
+            const particles = document.getElementById('particles-js');
+            const scrollPosition = window.scrollY;
+            particles.style.transform = `translateY(${scrollPosition * 0.4}px)`;
         });
 
         // Optimized 3D Tilt Effect
