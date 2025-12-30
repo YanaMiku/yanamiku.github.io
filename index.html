@@ -18,6 +18,9 @@
     
     <!-- Particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- Sketchfab Viewer API -->
+    <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
     
     <!-- Konfigurasi Tailwind Custom -->
     <script>
@@ -229,7 +232,7 @@
             transform: scale(1.05);
         }
 
-        #sketchfab-iframe {
+        #api-frame {
             width: 100%;
             height: 100%;
             border: none;
@@ -243,7 +246,7 @@
 
     <!-- 3D Model Sketchfab di Pojok Kanan Bawah -->
     <div id="sketchfab-model-container">
-        <iframe id="sketchfab-iframe" src="https://sketchfab.com/models/8d913bda48f84217902e6829982c494f/embed?autostart=1&amp;ui_controls=0&amp;ui_infos=0&amp;ui_hint=0&amp;ui_stop=0&amp;transparent=0&amp;preload=1" allowfullscreen allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
+        <iframe id="api-frame" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
     </div>
 
     <!-- NAVBAR -->
@@ -715,20 +718,49 @@
 
         document.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-        // Scroll-based rotation untuk 3D Model Sketchfab
-        let lastScrollY = 0;
+        // Sketchfab Viewer API Initialization & Scroll Rotation
+        let api; // Global API object
+        let lastScrollY = window.scrollY;
+
+        const iframe = document.getElementById('api-frame');
+        const version = '1.12.1';
+        const client = new Sketchfab(version, iframe);
+
+        const uid = '8d913bda48f84217902e6829982c494f'; // Model ID (ganti jika ingin model lain)
+
+        client.init(uid, {
+            success: function onSuccess(sketchfabAPI) {
+                api = sketchfabAPI;
+                api.start();
+                api.addEventListener('viewerready', function() {
+                    console.log('Sketchfab Viewer Ready');
+                    // Hide default UI controls untuk tampilan lebih bersih
+                    api.hideUI(['bottom']);
+                });
+            },
+            error: function onError() {
+                console.error('Sketchfab API error');
+            },
+            ui_controls: 0,
+            ui_infos: 0,
+            ui_hint: 0,
+            ui_stop: 0,
+            autostart: 1,
+            preload: 1,
+            transparent: 0
+        });
+
+        // Scroll-based Y-axis rotation (horizontal orbit)
         window.addEventListener('scroll', () => {
+            if (!api) return;
+
             const currentScrollY = window.scrollY;
             const delta = currentScrollY - lastScrollY;
-            const iframe = document.getElementById('sketchfab-iframe');
-            if (iframe && iframe.contentWindow) {
-                // Kirim pesan ke iframe Sketchfab API untuk mengontrol camera orbit (rotasi Y)
-                iframe.contentWindow.postMessage({
-                    type: 'viewer.request',
-                    method: 'camera.orbit',
-                    args: [delta * 0.5, 0]  // Rotasi horizontal (kiri-kanan) berdasarkan delta scroll
-                }, '*');
-            }
+
+            // Rotasi horizontal (Y-axis) berdasarkan delta scroll
+            // Nilai 0.005 bisa disesuaikan untuk kecepatan rotasi
+            api.orbit(delta * 0.005, 0); // yaw (horizontal), pitch (vertical = 0)
+
             lastScrollY = currentScrollY;
         });
 
